@@ -1,0 +1,41 @@
+{
+  "name": "electron_openvpn",
+  "productName": "electron_openvpn",
+  "description": "Application for electron openvpn client",
+  "version": "0.1.0",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "electron": "^3.0.13",
+    "electron-packager": "^12.2.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-sudo": "^4.0.12",
+    "electron-winstaller": "^2.7.0",
+    "fs": "^0.0.1-security",
+    "moment": "^2.23.0",
+    "tmp": "^0.0.33"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Songark/Electron_OpenVPN.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds --darwinDarkModeSupport=true",
+    "package-win": "electron-packager . electron_openvpn --overwrite --platform=win32 --arch=x64 --icon=assets/icons/logo.ico --prune=true --out=release-builds  --win32metadata.requested-execution-level=requireAdministrator --version-string.ProductName=\"Electron OpenVpn App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
+    "create-installer-win": "node installers/windows/createinstaller.js",
+    "create-debian-installer": "electron-installer-debian --src release-builds/electron-tutorial-app-linux-x64/ --arch amd64 --config debian.json"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-sudo": "^4.0.12",
+    "fs": "^0.0.1-security",
+    "moment": "^2.23.0",
+    "ps-node": "^0.1.6",
+    "tmp": "^0.0.33"
+  }
+}
